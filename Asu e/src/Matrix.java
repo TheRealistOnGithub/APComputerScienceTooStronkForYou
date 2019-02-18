@@ -34,12 +34,12 @@ public class Matrix {
      * @return the matrix
      */
     public Matrix set(int row, int column, double value) {
-        array[row][column] = value;
+
 
     }
 
     public Matrix get(int row, int column) {
-        System.out.println(array[row][column]);
+
     }
 
     /**
@@ -61,6 +61,7 @@ public class Matrix {
 
     /**
      * Subtracts two Matricies and outputs the resultant, if out of range, returns Matrix exception.
+     *
      * @param One
      * @param Two
      * @return
@@ -75,12 +76,28 @@ public class Matrix {
         return Three;
     }
 
-    public Matrix mult(Matrix, Matrix) {
-    
+    public Matrix mult(Matrix One, Matrix Two) {
+        Matrix Three = new Matrix(One.row, Two.column);
+        for (int x = 0; x < Three.row; x++){
+            for (int y= 0; y < Three.column; y++){
+                for (int z = 0; z < One.row; z++
+            }
+        }
     }
 
-    public Matrix mult(Matrix, double) {
-
+    /**
+     * Performs scalar multiplication with a matrix and a scalar number
+     * @param One
+     * @param amplitude
+     * @return
+     */
+    public Matrix mult(Matrix One, double amplitude) {
+        for (int x = 0; x < row; x++) {
+            for (int y = 0; y < column; y++) {
+                One.array[row][column] = One.array[row][column] * amplitude;
+            }
+        }
+        return One;
     }
 
     public Matrix transpose(Matrix) {
