@@ -9,7 +9,7 @@ public class Matrix {
     int row;
     int column;
     double[][] array;
-   
+
 
     public static void main(String[] Args) {
 
@@ -34,13 +34,13 @@ public class Matrix {
      * @param value the value to be inserted into the array
      * @return the matrix
      */
-    public Matrix set(int x, int y, double value) throws MatrixException {
-        if (x < 0 || x >= array[row].length || y < 0 || y >= array[column].length) {
+    public void set(int x, int y, double value) throws MatrixException {
+        if (x < 0 || x > row || y < 0 || y > column) {
             throw new MatrixException("Hyperbruh yo shit is null");
+        } else {
+            array[x][y] = value;
         }
-        Matrix One = new Matrix(row, column);
-        One.array[x][y] = value;
-        return One;
+
 
     }
 
@@ -52,12 +52,11 @@ public class Matrix {
      * @return the value in a cell of the specific index of the matrix
      */
     public double get(int x, int y) throws MatrixException {
-        if (x < 0 || x >= array[row].length || y < 0 || y >= array[column].length) {
-            throw new MatrixException("Hyperbruh you shit is null");
+        if (x < 0 || x > row || y < 0 || y > column) {
+            throw new MatrixException("Hyperbruh yo shit is null");
 
         }
-        Matrix One = new Matrix(row, column);
-        return One.array[x][y];
+        return array[x][y];
     }
 
     /**
@@ -68,7 +67,7 @@ public class Matrix {
      * @return The output matrix
      */
     public Matrix add(Matrix One, Matrix Two) throws MatrixException {
-        if ((One.array == null) || (Two.array == null) || One.array.length > Two.array.length || Two.array.length > One.array.length) {
+        if ((One.array == null) || (Two.array == null) || One.row > Two.row || Two.column > One.column) {
             throw new MatrixException("Hyperbruh your array is null or it can't be added");
         }
         Matrix Three = new Matrix(row, column);
@@ -88,7 +87,7 @@ public class Matrix {
      * @return the resultant matrix
      */
     public Matrix sub(Matrix One, Matrix Two) throws MatrixException {
-        if ((One.array == null) || (Two.array == null) || One.array.length > Two.array.length || Two.array.length > One.array.length) {
+        if ((One.array == null) || (Two.array == null) || One.row > Two.row || One.column > Two.column) {
             throw new MatrixException("Hyperbruh your array is null or it can't be subtracted");
         }
         Matrix Three = new Matrix(row, column);
@@ -108,7 +107,7 @@ public class Matrix {
      * @return the resultant matrix
      */
     public Matrix mult(Matrix One, Matrix Two) throws MatrixException {
-        if ((One.array == null) || (Two.array == null) || One.array[column] != Two.array[row] || Two.array[column] != One.array[row]) {
+        if ((One.array == null) || (Two.array == null) || One.column != Two.row || Two.column != One.row) {
             throw new MatrixException("Hyperbruh your arrays are null or incorrect dimensions");
         }
         Matrix Three = new Matrix(One.row, Two.column);
