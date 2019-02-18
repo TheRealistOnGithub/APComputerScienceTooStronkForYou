@@ -43,7 +43,7 @@ public class Matrix {
     }
 
     /**
-     * Adds two Matrices and outputs the resultant
+     * Adds two Matrices and outputs the resultant.
      *
      * @param One The first matrix
      * @param Two The second matrix
@@ -59,6 +59,12 @@ public class Matrix {
         return Three;
     }
 
+    /**
+     * Subtracts two Matricies and outputs the resultant, if out of range, returns Matrix exception.
+     * @param One
+     * @param Two
+     * @return
+     */
     public Matrix sub(Matrix One, Matrix Two) {
         Matrix Three = new Matrix(row, column);
         for (int x = 0; x < row; x++) {
@@ -70,7 +76,7 @@ public class Matrix {
     }
 
     public Matrix mult(Matrix, Matrix) {
-
+    
     }
 
     public Matrix mult(Matrix, double) {
