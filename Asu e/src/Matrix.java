@@ -9,7 +9,7 @@ public class Matrix {
     int row;
     int column;
     double[][] array;
-    double[][] testArray;
+   
 
     public static void main(String[] Args) {
 
@@ -34,7 +34,10 @@ public class Matrix {
      * @param value the value to be inserted into the array
      * @return the matrix
      */
-    public Matrix set(int x, int y, double value) {
+    public Matrix set(int x, int y, double value) throws MatrixException {
+        if (x < 0 || x >= array[row].length || y < 0 || y >= array[column].length) {
+            throw new MatrixException("Hyperbruh yo shit is null");
+        }
         Matrix One = new Matrix(row, column);
         One.array[x][y] = value;
         return One;
@@ -48,7 +51,11 @@ public class Matrix {
      * @param y The column parameter of the array
      * @return the value in a cell of the specific index of the matrix
      */
-    public double get(int x, int y) {
+    public double get(int x, int y) throws MatrixException {
+        if (x < 0 || x >= array[row].length || y < 0 || y >= array[column].length) {
+            throw new MatrixException("Hyperbruh you shit is null");
+
+        }
         Matrix One = new Matrix(row, column);
         return One.array[x][y];
     }
@@ -60,7 +67,10 @@ public class Matrix {
      * @param Two The second matrix
      * @return The output matrix
      */
-    public Matrix add(Matrix One, Matrix Two) {
+    public Matrix add(Matrix One, Matrix Two) throws MatrixException {
+        if ((One.array == null) || (Two.array == null) || One.array.length > Two.array.length || Two.array.length > One.array.length) {
+            throw new MatrixException("Hyperbruh your array is null or it can't be added");
+        }
         Matrix Three = new Matrix(row, column);
         for (int x = 0; x < row; x++) {
             for (int y = 0; y < column; y++) {
@@ -77,7 +87,10 @@ public class Matrix {
      * @param Two The second matrix input
      * @return the resultant matrix
      */
-    public Matrix sub(Matrix One, Matrix Two) {
+    public Matrix sub(Matrix One, Matrix Two) throws MatrixException {
+        if ((One.array == null) || (Two.array == null) || One.array.length > Two.array.length || Two.array.length > One.array.length) {
+            throw new MatrixException("Hyperbruh your array is null or it can't be subtracted");
+        }
         Matrix Three = new Matrix(row, column);
         for (int x = 0; x < row; x++) {
             for (int y = 0; y < column; y++) {
@@ -94,7 +107,10 @@ public class Matrix {
      * @param Two The second matrix
      * @return the resultant matrix
      */
-    public Matrix mult(Matrix One, Matrix Two) {
+    public Matrix mult(Matrix One, Matrix Two) throws MatrixException {
+        if ((One.array == null) || (Two.array == null) || One.array[column] != Two.array[row] || Two.array[column] != One.array[row]) {
+            throw new MatrixException("Hyperbruh your arrays are null or incorrect dimensions");
+        }
         Matrix Three = new Matrix(One.row, Two.column);
         for (int x = 0; x < Three.row; x++) {
             for (int y = 0; y < Three.column; y++) {
@@ -113,7 +129,10 @@ public class Matrix {
      * @param amplitude the scalar value the matrix is multiplied by
      * @return The resultant matrix
      */
-    public Matrix mult(Matrix One, double amplitude) {
+    public Matrix mult(Matrix One, double amplitude) throws MatrixException {
+        if (One.array == null) {
+            throw new MatrixException("Hyperbruh your array is null");
+        }
         for (int x = 0; x < row; x++) {
             for (int y = 0; y < column; y++) {
                 One.array[row][column] = One.array[row][column] * amplitude;
@@ -128,7 +147,10 @@ public class Matrix {
      * @param One Input matrix
      * @return Matrix that is transposed
      */
-    public Matrix transpose(Matrix One) {
+    public Matrix transpose(Matrix One) throws MatrixException {
+        if (One.array == null) {
+
+        }
         for (int x = 0; x < row; x++) {
             for (int y = 0; y < column; y++) {
                 One.array[x][y] = One.array[y][x];
@@ -142,9 +164,7 @@ public class Matrix {
 
 /**
  * MatrixException
- * <p>
  * This exception is thrown for any error associated with the
- * <p>
  * methods in the Matrix class.
  *
  * @author Mr. Kramer
