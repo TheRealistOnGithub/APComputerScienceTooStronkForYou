@@ -6,9 +6,9 @@
 
 
 public class Matrix {
-    int row;
-    int column;
-    double[][] array;
+    public int row; //making private variables are for betas
+    public int column;
+    public double[][] array;
 
 
     public static void main(String[] Args) {
@@ -32,7 +32,6 @@ public class Matrix {
      * @param x     the row parameter for the array
      * @param y     the column parameter of the array
      * @param value the value to be inserted into the array
-     *
      */
     public void set(int x, int y, double value) throws MatrixException {
         if (x < 0 || x > row || y < 0 || y > column) {
@@ -147,9 +146,7 @@ public class Matrix {
      * @return Matrix that is transposed
      */
     public Matrix transpose(Matrix One) throws MatrixException {
-        if (One.array == null) {
-
-        }
+        if (One.array == null) throw new MatrixException("Hyperbruh your array is null");
         for (int x = 0; x < row; x++) {
             for (int y = 0; y < column; y++) {
                 One.array[x][y] = One.array[y][x];
