@@ -32,7 +32,7 @@ public class Matrix {
      * @param x     the row parameter for the array
      * @param y     the column parameter of the array
      * @param value the value to be inserted into the array
-     * @return the matrix
+     *
      */
     public void set(int x, int y, double value) throws MatrixException {
         if (x < 0 || x > row || y < 0 || y > column) {
