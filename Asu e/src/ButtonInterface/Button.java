@@ -2,7 +2,7 @@ package ButtonInterface;
 
 public interface Button {
 
-    public void push();
+    void push();
 
-    public String state();
+     String state();
 }
