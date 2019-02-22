@@ -1,7 +1,7 @@
 package ButtonInterface;
 
 
-import java.io.IOException;
+        import java.io.IOException;
 
 class ButtonTooJapaneseForYou implements Button {
     public int state = 0;
